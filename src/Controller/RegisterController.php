@@ -31,6 +31,7 @@ class RegisterController extends AbstractController
         );
         $user->setPassword($hashedPassword);
         $user->setUsername($username);
+        $user->setCreatedAt(new \DateTimeImmutable());
         $em->persist($user);
         $em->flush();
         return $this->json(['message' => 'registered successfully']);
